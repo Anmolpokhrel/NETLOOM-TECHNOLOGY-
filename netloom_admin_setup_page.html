@@ -1,0 +1,429 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#0B6FC5;--orange:#FF8D10;--dark:#0d2137;--sidebar-w:220px}
+.adm{font-family:'Poppins',sans-serif;display:flex;min-height:100vh;background:#f0f4f9;font-size:13px}
+.adm-sidebar{width:var(--sidebar-w);background:var(--dark);display:flex;flex-direction:column;flex-shrink:0}
+.adm-logo{padding:18px 20px 14px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.adm-logo-text{font-size:17px;font-weight:700;color:#fff;letter-spacing:-0.3px}
+.adm-logo-text span{color:var(--orange)}
+.adm-logo-sub{font-size:8px;color:rgba(255,255,255,0.4);letter-spacing:3px;margin-top:2px}
+.adm-nav{padding:14px 0;flex:1}
+.adm-nav-section{font-size:9px;font-weight:600;color:rgba(255,255,255,0.3);letter-spacing:2px;padding:10px 20px 6px;text-transform:uppercase}
+.adm-nav-item{display:flex;align-items:center;gap:10px;padding:9px 20px;color:rgba(255,255,255,0.6);cursor:pointer;transition:all .18s;border-left:2px solid transparent;font-size:13px}
+.adm-nav-item:hover{background:rgba(255,255,255,0.06);color:#fff}
+.adm-nav-item.active{background:rgba(11,111,197,0.25);color:#fff;border-left-color:var(--blue)}
+.adm-nav-item i{font-size:16px;flex-shrink:0}
+.adm-nav-badge{margin-left:auto;background:var(--orange);color:#fff;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px}
+.adm-user{padding:14px 20px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:10px}
+.adm-avatar{width:32px;height:32px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#fff;flex-shrink:0}
+.adm-user-name{font-size:12px;font-weight:500;color:#fff}
+.adm-user-role{font-size:10px;color:rgba(255,255,255,0.4)}
+
+.adm-main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.adm-topbar{background:#fff;border-bottom:1px solid #e2eaf3;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.adm-topbar-title{font-size:16px;font-weight:600;color:var(--dark)}
+.adm-topbar-right{display:flex;align-items:center;gap:12px}
+.adm-icon-btn{width:34px;height:34px;border-radius:8px;border:1px solid #e2eaf3;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#666;font-size:17px;transition:all .18s}
+.adm-icon-btn:hover{background:#f0f4f9;color:var(--blue)}
+.adm-save-btn{background:var(--blue);color:#fff;border:none;padding:7px 18px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:background .2s}
+.adm-save-btn:hover{background:#0958a3}
+
+.adm-content{padding:24px;overflow-y:auto;flex:1}
+.adm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.adm-stat-card{background:#fff;border-radius:10px;padding:16px;border:1px solid #e2eaf3}
+.adm-stat-label{font-size:11px;color:#888;font-weight:500;margin-bottom:6px}
+.adm-stat-val{font-size:22px;font-weight:700;color:var(--dark)}
+.adm-stat-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px;margin-top:5px}
+.adm-stat-badge.up{background:#e8f5e9;color:#2e7d32}
+.adm-stat-badge.down{background:#fff3e0;color:#e65100}
+.adm-stat-badge.blue{background:#e3f2fd;color:#1565c0}
+
+.adm-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.adm-card{background:#fff;border-radius:10px;border:1px solid #e2eaf3;overflow:hidden}
+.adm-card-head{padding:14px 18px 12px;border-bottom:1px solid #f0f4f9;display:flex;align-items:center;justify-content:space-between}
+.adm-card-head h3{font-size:13px;font-weight:600;color:var(--dark)}
+.adm-card-head-action{font-size:11px;color:var(--blue);cursor:pointer;font-weight:500}
+.adm-card-body{padding:16px 18px}
+
+.adm-form-row{margin-bottom:14px}
+.adm-form-row label{display:block;font-size:11px;font-weight:600;color:#555;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.adm-input{width:100%;padding:8px 11px;border:1px solid #dde8f5;border-radius:7px;font-size:12px;font-family:'Poppins',sans-serif;color:var(--dark);background:#fff;transition:border .18s;outline:none}
+.adm-input:focus{border-color:var(--blue)}
+.adm-input-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.adm-select{width:100%;padding:8px 11px;border:1px solid #dde8f5;border-radius:7px;font-size:12px;font-family:'Poppins',sans-serif;color:var(--dark);background:#fff;outline:none}
+.adm-textarea{width:100%;padding:8px 11px;border:1px solid #dde8f5;border-radius:7px;font-size:12px;font-family:'Poppins',sans-serif;color:var(--dark);resize:vertical;min-height:72px;outline:none}
+.adm-textarea:focus{border-color:var(--blue)}
+
+.adm-toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f5f8fc}
+.adm-toggle-row:last-child{border-bottom:none;padding-bottom:0}
+.adm-toggle-info h4{font-size:12px;font-weight:500;color:var(--dark)}
+.adm-toggle-info p{font-size:11px;color:#999;margin-top:1px}
+.adm-toggle{position:relative;width:36px;height:20px;flex-shrink:0}
+.adm-toggle input{opacity:0;width:0;height:0}
+.adm-toggle-slider{position:absolute;inset:0;background:#ddd;border-radius:20px;cursor:pointer;transition:.2s}
+.adm-toggle-slider:before{content:'';position:absolute;width:14px;height:14px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+.adm-toggle input:checked+.adm-toggle-slider{background:var(--blue)}
+.adm-toggle input:checked+.adm-toggle-slider:before{transform:translateX(16px)}
+
+.adm-color-row{display:flex;gap:10px;align-items:center}
+.adm-color-swatch{width:32px;height:32px;border-radius:7px;border:1px solid #dde8f5;cursor:pointer;flex-shrink:0}
+.adm-color-hex{flex:1;padding:7px 11px;border:1px solid #dde8f5;border-radius:7px;font-size:12px;font-family:'Poppins',sans-serif;color:var(--dark);outline:none}
+
+.adm-upload-box{border:1.5px dashed #c5d8ee;border-radius:8px;padding:18px;text-align:center;cursor:pointer;transition:border .18s}
+.adm-upload-box:hover{border-color:var(--blue)}
+.adm-upload-icon{font-size:24px;color:#b0c4d8;margin-bottom:6px}
+.adm-upload-text{font-size:12px;color:#888}
+.adm-upload-text span{color:var(--blue);font-weight:500}
+
+.adm-social-row{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.adm-social-icon{width:32px;height:32px;border-radius:7px;background:#f0f4f9;display:flex;align-items:center;justify-content:center;font-size:16px;color:#666;flex-shrink:0}
+.adm-social-input{flex:1;padding:7px 10px;border:1px solid #dde8f5;border-radius:7px;font-size:12px;font-family:'Poppins',sans-serif;color:var(--dark);outline:none}
+.adm-social-input:focus{border-color:var(--blue)}
+
+.adm-pkg-table{width:100%;border-collapse:collapse}
+.adm-pkg-table th{font-size:10px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.5px;padding:6px 10px;background:#f7fafd;text-align:left;border-bottom:1px solid #e8f0f8}
+.adm-pkg-table td{padding:9px 10px;border-bottom:1px solid #f5f8fc;font-size:12px;color:var(--dark)}
+.adm-pkg-table tr:last-child td{border-bottom:none}
+.adm-status-pill{display:inline-block;padding:2px 9px;border-radius:10px;font-size:10px;font-weight:600}
+.adm-status-pill.active{background:#e8f5e9;color:#2e7d32}
+.adm-status-pill.draft{background:#fff8e1;color:#f57f17}
+.adm-pkg-edit{color:var(--blue);font-size:13px;cursor:pointer}
+
+.adm-team-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f8fc}
+.adm-team-row:last-child{border-bottom:none}
+.adm-team-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#fff;flex-shrink:0}
+.adm-team-name{font-size:12px;font-weight:500;color:var(--dark)}
+.adm-team-role{font-size:11px;color:#999}
+.adm-team-status{margin-left:auto;font-size:10px;font-weight:600;padding:2px 9px;border-radius:10px}
+
+.adm-full-card{background:#fff;border-radius:10px;border:1px solid #e2eaf3;margin-bottom:16px}
+</style>
+
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Netloom Technology admin setup dashboard</h2>
+
+<div class="adm">
+  <aside class="adm-sidebar">
+    <div class="adm-logo">
+      <div class="adm-logo-text">Net<span>LOOM</span></div>
+      <div class="adm-logo-sub">T E C H N O L O G Y</div>
+    </div>
+    <nav class="adm-nav">
+      <div class="adm-nav-section">Main</div>
+      <div class="adm-nav-item" onclick="setTab('dashboard',this)"><i class="ti ti-layout-dashboard" aria-hidden="true"></i> Dashboard</div>
+      <div class="adm-nav-item active" onclick="setTab('setup',this)"><i class="ti ti-settings" aria-hidden="true"></i> Site Setup</div>
+      <div class="adm-nav-item" onclick="setTab('services',this)"><i class="ti ti-layers" aria-hidden="true"></i> Services <span class="adm-nav-badge">4</span></div>
+      <div class="adm-nav-item" onclick="setTab('packages',this)"><i class="ti ti-package" aria-hidden="true"></i> Packages</div>
+      <div class="adm-nav-section">Manage</div>
+      <div class="adm-nav-item" onclick="setTab('inquiries',this)"><i class="ti ti-mail" aria-hidden="true"></i> Inquiries <span class="adm-nav-badge">7</span></div>
+      <div class="adm-nav-item" onclick="setTab('team',this)"><i class="ti ti-users" aria-hidden="true"></i> Team</div>
+      <div class="adm-nav-item" onclick="setTab('media',this)"><i class="ti ti-photo" aria-hidden="true"></i> Media</div>
+      <div class="adm-nav-section">System</div>
+      <div class="adm-nav-item" onclick="setTab('seo',this)"><i class="ti ti-search" aria-hidden="true"></i> SEO</div>
+      <div class="adm-nav-item" onclick="setTab('security',this)"><i class="ti ti-lock" aria-hidden="true"></i> Security</div>
+    </nav>
+    <div class="adm-user">
+      <div class="adm-avatar">AD</div>
+      <div>
+        <div class="adm-user-name">Admin</div>
+        <div class="adm-user-role">Super Admin</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="adm-main">
+    <div class="adm-topbar">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:12px;color:#999">Admin</span>
+        <span style="color:#ccc">/</span>
+        <span class="adm-topbar-title" id="page-title">Site Setup</span>
+      </div>
+      <div class="adm-topbar-right">
+        <div class="adm-icon-btn" title="Notifications"><i class="ti ti-bell" aria-hidden="true"></i></div>
+        <div class="adm-icon-btn" title="Preview site"><i class="ti ti-external-link" aria-hidden="true"></i></div>
+        <button class="adm-save-btn" onclick="showSaved()">Save Changes</button>
+      </div>
+    </div>
+
+    <div class="adm-content" id="adm-content">
+
+      <!-- DASHBOARD panel -->
+      <div id="panel-dashboard" style="display:none">
+        <div class="adm-stats">
+          <div class="adm-stat-card"><div class="adm-stat-label">Total Inquiries</div><div class="adm-stat-val">47</div><span class="adm-stat-badge up">+12% this month</span></div>
+          <div class="adm-stat-card"><div class="adm-stat-label">Active Packages</div><div class="adm-stat-val">12</div><span class="adm-stat-badge blue">4 categories</span></div>
+          <div class="adm-stat-card"><div class="adm-stat-label">Team Members</div><div class="adm-stat-val">6</div><span class="adm-stat-badge up">All active</span></div>
+          <div class="adm-stat-card"><div class="adm-stat-label">Pending Leads</div><div class="adm-stat-val">7</div><span class="adm-stat-badge down">Needs reply</span></div>
+        </div>
+        <div class="adm-grid">
+          <div class="adm-card">
+            <div class="adm-card-head"><h3>Recent Inquiries</h3><span class="adm-card-head-action">View all</span></div>
+            <div class="adm-card-body" style="padding:0">
+              <table style="width:100%;border-collapse:collapse">
+                <tr style="background:#f7fafd"><th style="font-size:10px;color:#888;padding:8px 14px;text-align:left;font-weight:600;letter-spacing:.5px">Name</th><th style="font-size:10px;color:#888;padding:8px 14px;text-align:left;font-weight:600;letter-spacing:.5px">Service</th><th style="font-size:10px;color:#888;padding:8px 14px;text-align:left;font-weight:600;letter-spacing:.5px">Status</th></tr>
+                <tr><td style="padding:9px 14px;font-size:12px">Rajan Shrestha</td><td style="padding:9px 14px;font-size:12px;color:#888">Web Dev</td><td style="padding:9px 14px"><span class="adm-status-pill active">New</span></td></tr>
+                <tr style="background:#fafcfe"><td style="padding:9px 14px;font-size:12px">Priya Tamang</td><td style="padding:9px 14px;font-size:12px;color:#888">Logo Design</td><td style="padding:9px 14px"><span class="adm-status-pill draft">Pending</span></td></tr>
+                <tr><td style="padding:9px 14px;font-size:12px">Anil KC</td><td style="padding:9px 14px;font-size:12px;color:#888">Digital Mktg</td><td style="padding:9px 14px"><span class="adm-status-pill active">New</span></td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-head"><h3>Quick Actions</h3></div>
+            <div class="adm-card-body" style="display:flex;flex-direction:column;gap:9px">
+              <button style="background:#f0f7ff;color:#0B6FC5;border:1px solid #c5d8ee;border-radius:7px;padding:9px 14px;font-size:12px;font-weight:500;cursor:pointer;text-align:left;font-family:Poppins,sans-serif;display:flex;align-items:center;gap:8px"><i class="ti ti-plus" style="font-size:15px" aria-hidden="true"></i> Add new service package</button>
+              <button style="background:#f0f7ff;color:#0B6FC5;border:1px solid #c5d8ee;border-radius:7px;padding:9px 14px;font-size:12px;font-weight:500;cursor:pointer;text-align:left;font-family:Poppins,sans-serif;display:flex;align-items:center;gap:8px"><i class="ti ti-upload" style="font-size:15px" aria-hidden="true"></i> Upload portfolio item</button>
+              <button style="background:#f0f7ff;color:#0B6FC5;border:1px solid #c5d8ee;border-radius:7px;padding:9px 14px;font-size:12px;font-weight:500;cursor:pointer;text-align:left;font-family:Poppins,sans-serif;display:flex;align-items:center;gap:8px"><i class="ti ti-mail" style="font-size:15px" aria-hidden="true"></i> Reply to pending inquiries</button>
+              <button style="background:#fff7ed;color:#c05e00;border:1px solid #fdd7a8;border-radius:7px;padding:9px 14px;font-size:12px;font-weight:500;cursor:pointer;text-align:left;font-family:Poppins,sans-serif;display:flex;align-items:center;gap:8px"><i class="ti ti-refresh" style="font-size:15px" aria-hidden="true"></i> Publish site changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SITE SETUP panel -->
+      <div id="panel-setup" style="display:block">
+        <div class="adm-stats" style="grid-template-columns:repeat(3,1fr)">
+          <div class="adm-stat-card"><div class="adm-stat-label">Site Status</div><div class="adm-stat-val" style="font-size:16px;color:#2e7d32">Live</div><span class="adm-stat-badge up">Published</span></div>
+          <div class="adm-stat-card"><div class="adm-stat-label">Last Updated</div><div class="adm-stat-val" style="font-size:16px">Today</div><span class="adm-stat-badge blue">Just now</span></div>
+          <div class="adm-stat-card"><div class="adm-stat-label">Unsaved Changes</div><div class="adm-stat-val" style="font-size:16px;color:var(--orange)" id="change-count">0</div><span class="adm-stat-badge down" id="change-label">Up to date</span></div>
+        </div>
+        <div class="adm-grid">
+          <div class="adm-card">
+            <div class="adm-card-head"><h3><i class="ti ti-building" style="font-size:15px;margin-right:6px;color:var(--blue)" aria-hidden="true"></i>Company Info</h3></div>
+            <div class="adm-card-body">
+              <div class="adm-form-row"><label>Company Name</label><input class="adm-input" value="Netloom Technology" oninput="trackChange()"></div>
+              <div class="adm-form-row"><label>Tagline</label><input class="adm-input" value="We Build Digital Identity That Grows Your Business" oninput="trackChange()"></div>
+              <div class="adm-input-row">
+                <div class="adm-form-row"><label>Email</label><input class="adm-input" value="hello@netloom.com" oninput="trackChange()"></div>
+                <div class="adm-form-row"><label>Phone</label><input class="adm-input" value="+977-9800000000" oninput="trackChange()"></div>
+              </div>
+              <div class="adm-form-row"><label>Address</label><input class="adm-input" value="Kathmandu, Bagmati Province, Nepal" oninput="trackChange()"></div>
+              <div class="adm-form-row"><label>About Description</label><textarea class="adm-textarea" oninput="trackChange()">Netloom Technology is a full-service digital agency specializing in graphic design, digital marketing, video production, and web development.</textarea></div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div class="adm-card">
+              <div class="adm-card-head"><h3><i class="ti ti-palette" style="font-size:15px;margin-right:6px;color:var(--blue)" aria-hidden="true"></i>Brand Colors</h3></div>
+              <div class="adm-card-body">
+                <div class="adm-form-row"><label>Primary (Blue)</label>
+                  <div class="adm-color-row"><input type="color" value="#0B6FC5" class="adm-color-swatch" oninput="trackChange()"><input class="adm-color-hex" value="#0B6FC5" oninput="trackChange()"></div>
+                </div>
+                <div class="adm-form-row"><label>Accent (Orange)</label>
+                  <div class="adm-color-row"><input type="color" value="#FF8D10" class="adm-color-swatch" oninput="trackChange()"><input class="adm-color-hex" value="#FF8D10" oninput="trackChange()"></div>
+                </div>
+                <div class="adm-form-row"><label>Font Family</label>
+                  <select class="adm-select" oninput="trackChange()"><option selected>Poppins</option><option>Inter</option><option>Roboto</option><option>Nunito</option></select>
+                </div>
+              </div>
+            </div>
+            <div class="adm-card">
+              <div class="adm-card-head"><h3><i class="ti ti-photo" style="font-size:15px;margin-right:6px;color:var(--blue)" aria-hidden="true"></i>Logo & Favicon</h3></div>
+              <div class="adm-card-body">
+                <div class="adm-upload-box" onclick="trackChange()">
+                  <div class="adm-upload-icon"><i class="ti ti-cloud-upload" aria-hidden="true"></i></div>
+                  <div class="adm-upload-text"><span>Click to upload</span> or drag & drop<br>PNG, SVG — max 2MB</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="adm-grid">
+          <div class="adm-card">
+            <div class="adm-card-head"><h3><i class="ti ti-brand-facebook" style="font-size:15px;margin-right:6px;color:var(--blue)" aria-hidden="true"></i>Social Media Links</h3></div>
+            <div class="adm-card-body">
+              <div class="adm-social-row"><div class="adm-social-icon"><i class="ti ti-brand-facebook" aria-hidden="true"></i></div><input class="adm-social-input" placeholder="Facebook page URL" oninput="trackChange()"></div>
+              <div class="adm-social-row"><div class="adm-social-icon"><i class="ti ti-brand-instagram" aria-hidden="true"></i></div><input class="adm-social-input" placeholder="Instagram profile URL" oninput="trackChange()"></div>
+              <div class="adm-social-row"><div class="adm-social-icon"><i class="ti ti-brand-tiktok" aria-hidden="true"></i></div><input class="adm-social-input" placeholder="TikTok profile URL" oninput="trackChange()"></div>
+              <div class="adm-social-row"><div class="adm-social-icon"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></div><input class="adm-social-input" placeholder="LinkedIn page URL" oninput="trackChange()"></div>
+              <div class="adm-social-row"><div class="adm-social-icon"><i class="ti ti-brand-youtube" aria-hidden="true"></i></div><input class="adm-social-input" placeholder="YouTube channel URL" oninput="trackChange()"></div>
+            </div>
+          </div>
+          <div class="adm-card">
+            <div class="adm-card-head"><h3><i class="ti ti-toggle-right" style="font-size:15px;margin-right:6px;color:var(--blue)" aria-hidden="true"></i>Site Features</h3></div>
+            <div class="adm-card-body">
+              <div class="adm-toggle-row">
+                <div class="adm-toggle-info"><h4>Show hero section</h4><p>Display full-screen hero on homepage</p></div>
+                <label class="adm-toggle"><input type="checkbox" checked oninput="trackChange()"><span class="adm-toggle-slider"></span></label>
+              </div>
+              <div class="adm-toggle-row">
+                <div class="adm-toggle-info"><h4>Enable contact form</h4><p>Allow visitors to send inquiries</p></div>
+                <label class="adm-toggle"><input type="checkbox" checked oninput="trackChange()"><span class="adm-toggle-slider"></span></label>
+              </div>
+              <div class="adm-toggle-row">
+                <div class="adm-toggle-info"><h4>Show packages section</h4><p>Display pricing & packages on site</p></div>
+                <label class="adm-toggle"><input type="checkbox" checked oninput="trackChange()"><span class="adm-toggle-slider"></span></label>
+              </div>
+              <div class="adm-toggle-row">
+                <div class="adm-toggle-info"><h4>Show stats counter</h4><p>Animated numbers in hero section</p></div>
+                <label class="adm-toggle"><input type="checkbox" checked oninput="trackChange()"><span class="adm-toggle-slider"></span></label>
+              </div>
+              <div class="adm-toggle-row">
+                <div class="adm-toggle-info"><h4>Maintenance mode</h4><p>Show maintenance page to visitors</p></div>
+                <label class="adm-toggle"><input type="checkbox" oninput="trackChange()"><span class="adm-toggle-slider"></span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="adm-full-card">
+          <div class="adm-card-head"><h3><i class="ti ti-chart-bar" style="font-size:15px;margin-right:6px;color:var(--blue)" aria-hidden="true"></i>Homepage Stats Config</h3></div>
+          <div class="adm-card-body">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+              <div><label style="font-size:10px;font-weight:600;color:#888;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Projects Done</label><input class="adm-input" value="200+" oninput="trackChange()"></div>
+              <div><label style="font-size:10px;font-weight:600;color:#888;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Happy Clients</label><input class="adm-input" value="50+" oninput="trackChange()"></div>
+              <div><label style="font-size:10px;font-weight:600;color:#888;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Core Services</label><input class="adm-input" value="4" oninput="trackChange()"></div>
+              <div><label style="font-size:10px;font-weight:600;color:#888;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Avg Rating</label><input class="adm-input" value="5★" oninput="trackChange()"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PACKAGES panel -->
+      <div id="panel-packages" style="display:none">
+        <div class="adm-full-card" style="margin-bottom:16px">
+          <div class="adm-card-head"><h3>Manage Packages</h3><button style="background:var(--blue);color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif"><i class="ti ti-plus" style="font-size:12px" aria-hidden="true"></i> Add Package</button></div>
+          <div class="adm-card-body" style="padding:0">
+            <table class="adm-pkg-table">
+              <thead><tr><th>Package Name</th><th>Category</th><th>Tier</th><th>Status</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td>Basic</td><td>Graphic Design</td><td>Affordable</td><td><span class="adm-status-pill active">Active</span></td><td><i class="adm-pkg-edit ti ti-edit" aria-hidden="true"></i></td></tr>
+                <tr style="background:#fafcfe"><td>Standard</td><td>Graphic Design</td><td>Mid-Range</td><td><span class="adm-status-pill active">Active</span></td><td><i class="adm-pkg-edit ti ti-edit" aria-hidden="true"></i></td></tr>
+                <tr><td>Premium</td><td>Graphic Design</td><td>High-End</td><td><span class="adm-status-pill active">Active</span></td><td><i class="adm-pkg-edit ti ti-edit" aria-hidden="true"></i></td></tr>
+                <tr style="background:#fafcfe"><td>Starter</td><td>Digital Marketing</td><td>Affordable</td><td><span class="adm-status-pill active">Active</span></td><td><i class="adm-pkg-edit ti ti-edit" aria-hidden="true"></i></td></tr>
+                <tr><td>Growth</td><td>Digital Marketing</td><td>Mid-Range</td><td><span class="adm-status-pill active">Active</span></td><td><i class="adm-pkg-edit ti ti-edit" aria-hidden="true"></i></td></tr>
+                <tr style="background:#fafcfe"><td>Pro</td><td>Digital Marketing</td><td>High-End</td><td><span class="adm-status-pill draft">Draft</span></td><td><i class="adm-pkg-edit ti ti-edit" aria-hidden="true"></i></td></tr>
+                <tr><td>Basic</td><td>Video Services</td><td>Affordable</td><td><span class="adm-status-pill active">Active</span></td><td><i class="adm-pkg-edit ti ti-edit" aria-hidden="true"></i></td></tr>
+                <tr style="background:#fafcfe"><td>Business</td><td>Web Design</td><td>Mid-Range</td><td><span class="adm-status-pill active">Active</span></td><td><i class="adm-pkg-edit ti ti-edit" aria-hidden="true"></i></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEAM panel -->
+      <div id="panel-team" style="display:none">
+        <div class="adm-full-card">
+          <div class="adm-card-head"><h3>Team Members</h3><button style="background:var(--blue);color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif"><i class="ti ti-plus" style="font-size:12px" aria-hidden="true"></i> Add Member</button></div>
+          <div class="adm-card-body">
+            <div class="adm-team-row"><div class="adm-team-avatar" style="background:#0B6FC5">AD</div><div><div class="adm-team-name">Admin User</div><div class="adm-team-role">Super Admin</div></div><span class="adm-team-status" style="background:#e8f5e9;color:#2e7d32">Active</span></div>
+            <div class="adm-team-row"><div class="adm-team-avatar" style="background:#FF8D10">RK</div><div><div class="adm-team-name">Rajesh Kumar</div><div class="adm-team-role">Lead Designer</div></div><span class="adm-team-status" style="background:#e8f5e9;color:#2e7d32">Active</span></div>
+            <div class="adm-team-row"><div class="adm-team-avatar" style="background:#1D9E75">PT</div><div><div class="adm-team-name">Priya Tamang</div><div class="adm-team-role">Digital Marketer</div></div><span class="adm-team-status" style="background:#e8f5e9;color:#2e7d32">Active</span></div>
+            <div class="adm-team-row"><div class="adm-team-avatar" style="background:#534AB7">AK</div><div><div class="adm-team-name">Anil KC</div><div class="adm-team-role">Web Developer</div></div><span class="adm-team-status" style="background:#fff8e1;color:#f57f17">Away</span></div>
+            <div class="adm-team-row"><div class="adm-team-avatar" style="background:#993556">SM</div><div><div class="adm-team-name">Sunita Maharjan</div><div class="adm-team-role">Video Editor</div></div><span class="adm-team-status" style="background:#e8f5e9;color:#2e7d32">Active</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO panel -->
+      <div id="panel-seo" style="display:none">
+        <div class="adm-full-card">
+          <div class="adm-card-head"><h3><i class="ti ti-search" style="font-size:15px;margin-right:6px;color:var(--blue)" aria-hidden="true"></i>SEO Settings</h3></div>
+          <div class="adm-card-body">
+            <div class="adm-grid" style="margin-bottom:0">
+              <div>
+                <div class="adm-form-row"><label>Meta Title</label><input class="adm-input" value="Netloom Technology — Digital Agency Nepal"></div>
+                <div class="adm-form-row"><label>Meta Description</label><textarea class="adm-textarea">Netloom Technology is a full-service digital agency in Nepal offering graphic design, digital marketing, video production and web development.</textarea></div>
+                <div class="adm-form-row"><label>Keywords</label><input class="adm-input" placeholder="digital agency nepal, web design, logo design..."></div>
+              </div>
+              <div>
+                <div class="adm-form-row"><label>Google Analytics ID</label><input class="adm-input" placeholder="G-XXXXXXXXXX"></div>
+                <div class="adm-form-row"><label>Facebook Pixel ID</label><input class="adm-input" placeholder="XXXXXXXXXXXXXXX"></div>
+                <div class="adm-form-row"><label>OG Image URL</label><input class="adm-input" placeholder="https://netloom.com/og-image.png"></div>
+                <div class="adm-toggle-row" style="margin-top:8px">
+                  <div class="adm-toggle-info"><h4>Enable sitemap</h4><p>Auto-generate XML sitemap</p></div>
+                  <label class="adm-toggle"><input type="checkbox" checked><span class="adm-toggle-slider"></span></label>
+                </div>
+                <div class="adm-toggle-row">
+                  <div class="adm-toggle-info"><h4>Robots indexing</h4><p>Allow search engine crawling</p></div>
+                  <label class="adm-toggle"><input type="checkbox" checked><span class="adm-toggle-slider"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECURITY panel -->
+      <div id="panel-security" style="display:none">
+        <div class="adm-full-card">
+          <div class="adm-card-head"><h3><i class="ti ti-lock" style="font-size:15px;margin-right:6px;color:var(--blue)" aria-hidden="true"></i>Security & Access</h3></div>
+          <div class="adm-card-body">
+            <div class="adm-grid">
+              <div>
+                <div class="adm-form-row"><label>Admin Email</label><input class="adm-input" value="admin@netloom.com"></div>
+                <div class="adm-form-row"><label>New Password</label><input class="adm-input" type="password" placeholder="Enter new password"></div>
+                <div class="adm-form-row"><label>Confirm Password</label><input class="adm-input" type="password" placeholder="Confirm new password"></div>
+              </div>
+              <div>
+                <div class="adm-toggle-row">
+                  <div class="adm-toggle-info"><h4>Two-factor authentication</h4><p>Extra login security via email OTP</p></div>
+                  <label class="adm-toggle"><input type="checkbox"><span class="adm-toggle-slider"></span></label>
+                </div>
+                <div class="adm-toggle-row">
+                  <div class="adm-toggle-info"><h4>Login attempt limit</h4><p>Block after 5 failed attempts</p></div>
+                  <label class="adm-toggle"><input type="checkbox" checked><span class="adm-toggle-slider"></span></label>
+                </div>
+                <div class="adm-toggle-row">
+                  <div class="adm-toggle-info"><h4>Activity logging</h4><p>Record all admin actions</p></div>
+                  <label class="adm-toggle"><input type="checkbox" checked><span class="adm-toggle-slider"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- placeholder panels -->
+      <div id="panel-services" style="display:none;padding:2rem;text-align:center;color:#888">
+        <i class="ti ti-layers" style="font-size:48px;color:#c5d8ee" aria-hidden="true"></i>
+        <p style="margin-top:12px;font-size:14px">Services management panel</p>
+        <button style="margin-top:12px;background:var(--blue);color:#fff;border:none;padding:8px 20px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer" onclick="sendPrompt('Build the services management admin panel for Netloom Technology')">Build this panel ↗</button>
+      </div>
+      <div id="panel-inquiries" style="display:none;padding:2rem;text-align:center;color:#888">
+        <i class="ti ti-mail" style="font-size:48px;color:#c5d8ee" aria-hidden="true"></i>
+        <p style="margin-top:12px;font-size:14px">Inquiries inbox panel</p>
+        <button style="margin-top:12px;background:var(--blue);color:#fff;border:none;padding:8px 20px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer" onclick="sendPrompt('Build the inquiries inbox admin panel for Netloom Technology')">Build this panel ↗</button>
+      </div>
+      <div id="panel-media" style="display:none;padding:2rem;text-align:center;color:#888">
+        <i class="ti ti-photo" style="font-size:48px;color:#c5d8ee" aria-hidden="true"></i>
+        <p style="margin-top:12px;font-size:14px">Media library panel</p>
+        <button style="margin-top:12px;background:var(--blue);color:#fff;border:none;padding:8px 20px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer" onclick="sendPrompt('Build the media library admin panel for Netloom Technology')">Build this panel ↗</button>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+var changes=0;
+function trackChange(){
+  changes++;
+  document.getElementById('change-count').textContent=changes;
+  document.getElementById('change-label').textContent=changes+' unsaved';
+}
+function showSaved(){
+  changes=0;
+  document.getElementById('change-count').textContent='0';
+  document.getElementById('change-label').textContent='Up to date';
+  var b=document.querySelector('.adm-save-btn');
+  var orig=b.textContent;
+  b.textContent='Saved!';
+  b.style.background='#2e7d32';
+  setTimeout(function(){b.textContent=orig;b.style.background='';},1800);
+}
+var panels={
+  dashboard:'Dashboard',setup:'Site Setup',services:'Services',
+  packages:'Packages',inquiries:'Inquiries',team:'Team',
+  media:'Media',seo:'SEO',security:'Security'
+};
+function setTab(id,el){
+  document.querySelectorAll('.adm-nav-item').forEach(function(i){i.classList.remove('active')});
+  el.classList.add('active');
+  Object.keys(panels).forEach(function(k){
+    var p=document.getElementById('panel-'+k);
+    if(p)p.style.display=(k===id)?'block':'none';
+  });
+  document.getElementById('page-title').textContent=panels[id]||id;
+}
+</script>
