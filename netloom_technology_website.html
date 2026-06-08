@@ -1,0 +1,491 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  .nl-site{font-family:'Poppins',sans-serif;background:#fff;color:#1a1a2e;overflow-x:hidden}
+  :root{--blue:#0B6FC5;--orange:#FF8D10;--dark:#0d2137;--light-bg:#f7fafd}
+  .nl-nav{background:#fff;border-bottom:1.5px solid #e8f0f8;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:99}
+  .nl-logo{display:flex;align-items:center;gap:10px}
+  .nl-logo-text{font-size:22px;font-weight:700;color:var(--blue);letter-spacing:-0.5px}
+  .nl-logo-text span{color:var(--orange)}
+  .nl-logo-sub{font-size:9px;font-weight:500;color:var(--orange);letter-spacing:4px;display:block;margin-top:-4px}
+  .nl-nav-links{display:flex;gap:2rem;list-style:none}
+  .nl-nav-links a{text-decoration:none;color:#444;font-size:13.5px;font-weight:500;transition:color .2s}
+  .nl-nav-links a:hover{color:var(--orange)}
+  .nl-btn{padding:9px 20px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s;font-family:'Poppins',sans-serif}
+  .nl-btn-primary{background:var(--blue);color:#fff}
+  .nl-btn-primary:hover{background:#0958a3}
+  .nl-btn-outline{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
+  .nl-btn-outline:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+  .nl-btn-orange{background:var(--orange);color:#fff}
+  .nl-btn-orange:hover{background:#e07a00}
+
+  /* HERO */
+  .nl-hero{background:linear-gradient(135deg,#0d2137 0%,#0B6FC5 60%,#1a8fe0 100%);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+  .nl-hero::before{content:'';position:absolute;top:-60px;right:-80px;width:320px;height:320px;border-radius:50%;border:40px solid rgba(255,141,16,0.12);pointer-events:none}
+  .nl-hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:250px;height:250px;border-radius:50%;border:30px solid rgba(255,255,255,0.06);pointer-events:none}
+  .nl-hero-badge{display:inline-block;background:rgba(255,141,16,0.2);color:#ffa940;border:1px solid rgba(255,141,16,0.4);padding:5px 16px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:1px;margin-bottom:1.25rem}
+  .nl-hero h1{font-size:2.6rem;font-weight:700;color:#fff;line-height:1.2;max-width:680px;margin:0 auto 1.25rem}
+  .nl-hero h1 span{color:var(--orange)}
+  .nl-hero p{color:rgba(255,255,255,0.8);font-size:15px;max-width:520px;margin:0 auto 2rem;line-height:1.8}
+  .nl-hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .nl-hero-stats{display:flex;gap:2rem;justify-content:center;margin-top:3rem;flex-wrap:wrap}
+  .nl-stat{text-align:center}
+  .nl-stat-num{font-size:28px;font-weight:700;color:#fff}
+  .nl-stat-num span{color:var(--orange)}
+  .nl-stat-label{font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:1px;text-transform:uppercase}
+
+  /* SECTIONS */
+  .nl-section{padding:4rem 2rem}
+  .nl-section-alt{background:var(--light-bg)}
+  .nl-section-title{text-align:center;margin-bottom:3rem}
+  .nl-section-title h2{font-size:1.9rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
+  .nl-section-title h2 span{color:var(--orange)}
+  .nl-section-title p{color:#666;font-size:14px;max-width:500px;margin:0 auto}
+  .nl-eyebrow{display:inline-block;color:var(--orange);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
+
+  /* ABOUT */
+  .nl-about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;max-width:900px;margin:0 auto}
+  .nl-about-visual{background:linear-gradient(135deg,var(--blue),#1a8fe0);border-radius:16px;padding:2.5rem;display:flex;flex-direction:column;gap:1rem}
+  .nl-about-tag{background:rgba(255,141,16,0.2);color:var(--orange);font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;width:fit-content;letter-spacing:1px}
+  .nl-about-big{font-size:2rem;font-weight:700;color:#fff;line-height:1.2}
+  .nl-about-desc{color:rgba(255,255,255,0.8);font-size:13px;line-height:1.8}
+  .nl-about-pills{display:flex;gap:.5rem;flex-wrap:wrap}
+  .nl-pill{background:rgba(255,255,255,0.15);color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;font-weight:500}
+  .nl-about-text h3{font-size:1.4rem;font-weight:700;color:var(--dark);margin-bottom:1rem}
+  .nl-about-text p{color:#555;font-size:14px;line-height:1.9;margin-bottom:1rem}
+  .nl-check-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+  .nl-check-list li{display:flex;align-items:center;gap:.6rem;font-size:13.5px;color:#444}
+  .nl-check-list li::before{content:'✓';background:var(--orange);color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+
+  /* SERVICES */
+  .nl-services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:920px;margin:0 auto}
+  .nl-service-card{background:#fff;border:1px solid #e8f0f8;border-radius:14px;padding:1.75rem 1.5rem;transition:all .25s;cursor:pointer}
+  .nl-service-card:hover{border-color:var(--orange);transform:translateY(-4px)}
+  .nl-service-card:hover .nl-service-icon{background:var(--orange);color:#fff}
+  .nl-service-icon{width:52px;height:52px;border-radius:12px;background:#e8f4ff;color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:1rem;transition:all .25s}
+  .nl-service-card h3{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:.5rem}
+  .nl-service-card p{font-size:12.5px;color:#666;line-height:1.7}
+
+  /* PACKAGES */
+  .nl-packages{max-width:960px;margin:0 auto}
+  .nl-pkg-tabs{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem}
+  .nl-pkg-tab{padding:8px 20px;border-radius:25px;border:1.5px solid #dde8f5;background:#fff;font-size:13px;font-weight:500;cursor:pointer;color:#555;font-family:'Poppins',sans-serif;transition:all .2s}
+  .nl-pkg-tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .nl-pkg-tab:hover:not(.active){border-color:var(--orange);color:var(--orange)}
+  .nl-pkg-panel{display:none}
+  .nl-pkg-panel.active{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+  .nl-pkg-card{border-radius:14px;border:1.5px solid #e0ecf9;background:#fff;padding:1.75rem;position:relative;overflow:hidden;transition:all .25s}
+  .nl-pkg-card:hover{border-color:var(--orange)}
+  .nl-pkg-card.featured{border-color:var(--blue);background:linear-gradient(160deg,#f0f8ff,#fff)}
+  .nl-pkg-badge{position:absolute;top:16px;right:16px;background:var(--orange);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px}
+  .nl-pkg-name{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:.25rem}
+  .nl-pkg-price{font-size:22px;font-weight:700;color:var(--blue);margin-bottom:.75rem}
+  .nl-pkg-price span{font-size:12px;font-weight:400;color:#888}
+  .nl-pkg-features{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.25rem}
+  .nl-pkg-features li{font-size:12.5px;color:#555;display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
+  .nl-pkg-features li::before{content:'•';color:var(--orange);font-weight:700;margin-top:1px}
+
+  /* WHY US */
+  .nl-why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.25rem;max-width:900px;margin:0 auto}
+  .nl-why-card{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid #eaf0f8;text-align:center}
+  .nl-why-icon{font-size:2rem;margin-bottom:.75rem}
+  .nl-why-card h4{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:.4rem}
+  .nl-why-card p{font-size:12px;color:#777;line-height:1.6}
+
+  /* PROCESS */
+  .nl-process{display:flex;gap:0;justify-content:center;align-items:center;flex-wrap:wrap;max-width:800px;margin:0 auto}
+  .nl-process-step{text-align:center;flex:1;min-width:110px;padding:1rem .5rem;position:relative}
+  .nl-process-step:not(:last-child)::after{content:'→';position:absolute;right:-8px;top:1.2rem;color:var(--orange);font-size:18px;font-weight:700}
+  .nl-process-num{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem}
+  .nl-process-step h4{font-size:13px;font-weight:600;color:var(--dark)}
+  .nl-process-step p{font-size:11.5px;color:#888;margin-top:.25rem}
+
+  /* CONTACT */
+  .nl-contact-wrap{max-width:700px;margin:0 auto;background:linear-gradient(135deg,var(--dark),var(--blue));border-radius:20px;padding:3rem 2.5rem;text-align:center;color:#fff}
+  .nl-contact-wrap h2{font-size:1.8rem;font-weight:700;margin-bottom:.75rem}
+  .nl-contact-wrap p{color:rgba(255,255,255,0.8);font-size:14px;margin-bottom:1.75rem}
+  .nl-contact-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .nl-contact-info{display:flex;gap:2rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+  .nl-cinfo{display:flex;align-items:center;gap:.5rem;font-size:13px;color:rgba(255,255,255,0.8)}
+
+  /* FOOTER */
+  .nl-footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:1.5rem 2rem;text-align:center;font-size:12.5px}
+  .nl-footer strong{color:#fff}
+  .nl-divider{width:40px;height:3px;background:var(--orange);margin:.5rem auto 0;border-radius:2px}
+</style>
+
+<div class="nl-site">
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Netloom Technology — Digital Agency Website Preview</h2>
+
+  <!-- NAV -->
+  <nav class="nl-nav">
+    <div class="nl-logo">
+      <div>
+        <div class="nl-logo-text">Net<span>LOOM</span></div>
+        <span class="nl-logo-sub">T E C H N O L O G Y</span>
+      </div>
+    </div>
+    <ul class="nl-nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Packages</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="nl-btn nl-btn-primary">Get a Quote</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="nl-hero">
+    <div class="nl-hero-badge">✦ CREATIVE DIGITAL SOLUTIONS</div>
+    <h1>We Build Digital Identity<br>That <span>Grows Your Business</span></h1>
+    <p>Netloom Technology provides creative digital solutions including design, marketing, and web development for forward-thinking brands.</p>
+    <div class="nl-hero-btns">
+      <button class="nl-btn nl-btn-orange" onclick="sendPrompt('Tell me about Netloom Technology services and pricing')">Get Started ↗</button>
+      <button class="nl-btn" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3)" onclick="document.querySelector('.nl-services-grid').scrollIntoView({behavior:'smooth'})">View Services</button>
+    </div>
+    <div class="nl-hero-stats">
+      <div class="nl-stat"><div class="nl-stat-num">200<span>+</span></div><div class="nl-stat-label">Projects Done</div></div>
+      <div class="nl-stat"><div class="nl-stat-num">50<span>+</span></div><div class="nl-stat-label">Happy Clients</div></div>
+      <div class="nl-stat"><div class="nl-stat-num">4</div><div class="nl-stat-label">Core Services</div></div>
+      <div class="nl-stat"><div class="nl-stat-num">5<span>★</span></div><div class="nl-stat-label">Avg Rating</div></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="nl-section">
+    <div class="nl-about-grid">
+      <div class="nl-about-visual">
+        <div class="nl-about-tag">ABOUT US</div>
+        <div class="nl-about-big">Full-Service<br>Digital Agency</div>
+        <p class="nl-about-desc">From pixels to profit — we craft identities that make your brand impossible to ignore.</p>
+        <div class="nl-about-pills">
+          <span class="nl-pill">Design</span>
+          <span class="nl-pill">Marketing</span>
+          <span class="nl-pill">Video</span>
+          <span class="nl-pill">Web Dev</span>
+        </div>
+      </div>
+      <div class="nl-about-text">
+        <span class="nl-eyebrow">Who We Are</span>
+        <h3>Building Brands in the Digital Age</h3>
+        <p>Netloom Technology is a full-service digital agency specializing in graphic design, digital marketing, video production, and web development. We help businesses grow with modern digital solutions tailored to their goals.</p>
+        <ul class="nl-check-list">
+          <li>Creative graphic design & branding</li>
+          <li>Data-driven digital marketing</li>
+          <li>Professional video production</li>
+          <li>Custom web design & development</li>
+          <li>Result-oriented, client-first approach</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="nl-section nl-section-alt">
+    <div class="nl-section-title">
+      <span class="nl-eyebrow">What We Offer</span>
+      <h2>Our Core <span>Services</span></h2>
+      <p>Everything your brand needs to stand out, scale up, and stay ahead in the digital landscape.</p>
+    </div>
+    <div class="nl-services-grid">
+      <div class="nl-service-card">
+        <div class="nl-service-icon"><i class="ti ti-palette" aria-hidden="true"></i></div>
+        <h3>Graphic Design</h3>
+        <p>Logos, social posts, flyers, brochures, ID cards, and complete brand kits crafted with precision.</p>
+      </div>
+      <div class="nl-service-card">
+        <div class="nl-service-icon"><i class="ti ti-speakerphone" aria-hidden="true"></i></div>
+        <h3>Digital Marketing</h3>
+        <p>Social media management, paid ads, SEO, and full-funnel marketing strategies that convert.</p>
+      </div>
+      <div class="nl-service-card">
+        <div class="nl-service-icon"><i class="ti ti-video" aria-hidden="true"></i></div>
+        <h3>Video Production</h3>
+        <p>Reels, promotional videos, commercial content, and stunning motion graphics for every platform.</p>
+      </div>
+      <div class="nl-service-card">
+        <div class="nl-service-icon"><i class="ti ti-code" aria-hidden="true"></i></div>
+        <h3>Web Development</h3>
+        <p>Fast, responsive websites from static pages to custom dashboards with SEO optimization built in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="nl-section">
+    <div class="nl-section-title">
+      <span class="nl-eyebrow">Pricing & Packages</span>
+      <h2>Plans for <span>Every Business</span></h2>
+      <p>Transparent, flexible packages designed to match your goals and budget.</p>
+    </div>
+    <div class="nl-packages">
+      <div class="nl-pkg-tabs">
+        <button class="nl-pkg-tab active" onclick="showPkg('design',this)">🎨 Graphic Design</button>
+        <button class="nl-pkg-tab" onclick="showPkg('marketing',this)">📣 Digital Marketing</button>
+        <button class="nl-pkg-tab" onclick="showPkg('video',this)">🎬 Video Services</button>
+        <button class="nl-pkg-tab" onclick="showPkg('web',this)">💻 Web Design</button>
+      </div>
+
+      <div id="pkg-design" class="nl-pkg-panel active">
+        <div class="nl-pkg-card">
+          <div class="nl-pkg-name">Basic</div>
+          <div class="nl-pkg-price">Affordable <span>/ package</span></div>
+          <ul class="nl-pkg-features">
+            <li>2 Social Media Posts</li>
+            <li>1 Promotional Flyer</li>
+            <li>Standard resolution delivery</li>
+            <li>1 revision round</li>
+          </ul>
+          <button class="nl-btn nl-btn-outline" style="width:100%" onclick="sendPrompt('I want to inquire about the Basic Graphic Design package')">Inquire ↗</button>
+        </div>
+        <div class="nl-pkg-card featured">
+          <div class="nl-pkg-badge">POPULAR</div>
+          <div class="nl-pkg-name">Standard</div>
+          <div class="nl-pkg-price">Mid-Range <span>/ package</span></div>
+          <ul class="nl-pkg-features">
+            <li>Logo Design (unique & modern)</li>
+            <li>5 Social Media Posts</li>
+            <li>1 Flyer Design</li>
+            <li>ID Card Design</li>
+            <li>3 revision rounds</li>
+          </ul>
+          <button class="nl-btn nl-btn-primary" style="width:100%" onclick="sendPrompt('I want the Standard Graphic Design package')">Get Started ↗</button>
+        </div>
+        <div class="nl-pkg-card">
+          <div class="nl-pkg-name">Premium</div>
+          <div class="nl-pkg-price">High-End <span>/ package</span></div>
+          <ul class="nl-pkg-features">
+            <li>Full Branding Kit</li>
+            <li>Unlimited Revisions</li>
+            <li>Logo + Brand Guide</li>
+            <li>Print & Digital assets</li>
+            <li>Priority support</li>
+          </ul>
+          <button class="nl-btn nl-btn-outline" style="width:100%" onclick="sendPrompt('Tell me about the Premium Graphic Design branding package')">Inquire ↗</button>
+        </div>
+      </div>
+
+      <div id="pkg-marketing" class="nl-pkg-panel">
+        <div class="nl-pkg-card">
+          <div class="nl-pkg-name">Starter</div>
+          <div class="nl-pkg-price">Affordable <span>/ month</span></div>
+          <ul class="nl-pkg-features">
+            <li>Social media management (1 platform)</li>
+            <li>8 posts/month</li>
+            <li>Basic analytics report</li>
+            <li>Caption & hashtag strategy</li>
+          </ul>
+          <button class="nl-btn nl-btn-outline" style="width:100%" onclick="sendPrompt('I want the Starter Digital Marketing package')">Inquire ↗</button>
+        </div>
+        <div class="nl-pkg-card featured">
+          <div class="nl-pkg-badge">POPULAR</div>
+          <div class="nl-pkg-name">Growth</div>
+          <div class="nl-pkg-price">Mid-Range <span>/ month</span></div>
+          <ul class="nl-pkg-features">
+            <li>Ads + Content strategy</li>
+            <li>SEO basics & optimization</li>
+            <li>2 platforms managed</li>
+            <li>Monthly performance report</li>
+            <li>Ad creative design included</li>
+          </ul>
+          <button class="nl-btn nl-btn-primary" style="width:100%" onclick="sendPrompt('I want the Growth Digital Marketing package')">Get Started ↗</button>
+        </div>
+        <div class="nl-pkg-card">
+          <div class="nl-pkg-name">Pro</div>
+          <div class="nl-pkg-price">High-End <span>/ month</span></div>
+          <ul class="nl-pkg-features">
+            <li>Full marketing strategy</li>
+            <li>Paid ads management</li>
+            <li>All platforms covered</li>
+            <li>Bi-weekly reporting</li>
+            <li>Dedicated account manager</li>
+          </ul>
+          <button class="nl-btn nl-btn-outline" style="width:100%" onclick="sendPrompt('Tell me about the Pro Digital Marketing package')">Inquire ↗</button>
+        </div>
+      </div>
+
+      <div id="pkg-video" class="nl-pkg-panel">
+        <div class="nl-pkg-card">
+          <div class="nl-pkg-name">Basic</div>
+          <div class="nl-pkg-price">Affordable <span>/ project</span></div>
+          <ul class="nl-pkg-features">
+            <li>Short reels editing</li>
+            <li>Up to 60 seconds</li>
+            <li>Subtitles & transitions</li>
+            <li>2 revision rounds</li>
+          </ul>
+          <button class="nl-btn nl-btn-outline" style="width:100%" onclick="sendPrompt('Basic video editing package inquiry')">Inquire ↗</button>
+        </div>
+        <div class="nl-pkg-card featured">
+          <div class="nl-pkg-badge">POPULAR</div>
+          <div class="nl-pkg-name">Standard</div>
+          <div class="nl-pkg-price">Mid-Range <span>/ project</span></div>
+          <ul class="nl-pkg-features">
+            <li>Promotional video editing</li>
+            <li>Up to 3 minutes</li>
+            <li>Music, transitions & color grade</li>
+            <li>Thumbnail design included</li>
+            <li>3 revision rounds</li>
+          </ul>
+          <button class="nl-btn nl-btn-primary" style="width:100%" onclick="sendPrompt('I want the Standard Video package')">Get Started ↗</button>
+        </div>
+        <div class="nl-pkg-card">
+          <div class="nl-pkg-name">Premium</div>
+          <div class="nl-pkg-price">High-End <span>/ project</span></div>
+          <ul class="nl-pkg-features">
+            <li>Full commercial video</li>
+            <li>Motion graphics & VFX</li>
+            <li>Professional color grading</li>
+            <li>Voiceover integration</li>
+            <li>Unlimited revisions</li>
+          </ul>
+          <button class="nl-btn nl-btn-outline" style="width:100%" onclick="sendPrompt('Tell me about the Premium Video Production package')">Inquire ↗</button>
+        </div>
+      </div>
+
+      <div id="pkg-web" class="nl-pkg-panel">
+        <div class="nl-pkg-card">
+          <div class="nl-pkg-name">Basic</div>
+          <div class="nl-pkg-price">Affordable <span>/ project</span></div>
+          <ul class="nl-pkg-features">
+            <li>Static 3-page website</li>
+            <li>Mobile responsive</li>
+            <li>Basic SEO setup</li>
+            <li>Contact info section</li>
+          </ul>
+          <button class="nl-btn nl-btn-outline" style="width:100%" onclick="sendPrompt('Basic website development package inquiry')">Inquire ↗</button>
+        </div>
+        <div class="nl-pkg-card featured">
+          <div class="nl-pkg-badge">POPULAR</div>
+          <div class="nl-pkg-name">Business</div>
+          <div class="nl-pkg-price">Mid-Range <span>/ project</span></div>
+          <ul class="nl-pkg-features">
+            <li>5–7 pages + contact form</li>
+            <li>CMS integration</li>
+            <li>Advanced SEO optimization</li>
+            <li>Google Analytics setup</li>
+            <li>1 month free support</li>
+          </ul>
+          <button class="nl-btn nl-btn-primary" style="width:100%" onclick="sendPrompt('I want the Business Website package')">Get Started ↗</button>
+        </div>
+        <div class="nl-pkg-card">
+          <div class="nl-pkg-name">Advanced</div>
+          <div class="nl-pkg-price">High-End <span>/ project</span></div>
+          <ul class="nl-pkg-features">
+            <li>Full custom website</li>
+            <li>Admin dashboard</li>
+            <li>Full SEO suite</li>
+            <li>eCommerce or booking system</li>
+            <li>3 months free support</li>
+          </ul>
+          <button class="nl-btn nl-btn-outline" style="width:100%" onclick="sendPrompt('Tell me about the Advanced Web Development package')">Inquire ↗</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="nl-section nl-section-alt">
+    <div class="nl-section-title">
+      <span class="nl-eyebrow">Why Choose Us</span>
+      <h2>The Netloom <span>Advantage</span></h2>
+    </div>
+    <div class="nl-why-grid">
+      <div class="nl-why-card">
+        <div class="nl-why-icon">🚀</div>
+        <h4>Fast Turnaround</h4>
+        <p>Quick delivery without compromising quality or creativity.</p>
+      </div>
+      <div class="nl-why-card">
+        <div class="nl-why-icon">🎯</div>
+        <h4>Result-Focused</h4>
+        <p>Every project is driven by measurable business outcomes.</p>
+      </div>
+      <div class="nl-why-card">
+        <div class="nl-why-icon">💡</div>
+        <h4>Creative Experts</h4>
+        <p>A passionate team of designers, marketers, and developers.</p>
+      </div>
+      <div class="nl-why-card">
+        <div class="nl-why-icon">🔄</div>
+        <h4>Unlimited Revisions</h4>
+        <p>Premium packages include unlimited tweaks until you're 100% satisfied.</p>
+      </div>
+      <div class="nl-why-card">
+        <div class="nl-why-icon">📊</div>
+        <h4>Data-Driven</h4>
+        <p>Marketing strategies backed by real analytics and insights.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="nl-section">
+    <div class="nl-section-title">
+      <span class="nl-eyebrow">How We Work</span>
+      <h2>Our Simple <span>Process</span></h2>
+    </div>
+    <div class="nl-process">
+      <div class="nl-process-step">
+        <div class="nl-process-num">1</div>
+        <h4>Discovery</h4>
+        <p>We learn about your brand & goals</p>
+      </div>
+      <div class="nl-process-step">
+        <div class="nl-process-num">2</div>
+        <h4>Strategy</h4>
+        <p>Tailored plan & creative direction</p>
+      </div>
+      <div class="nl-process-step">
+        <div class="nl-process-num">3</div>
+        <h4>Design</h4>
+        <p>We craft & build your solution</p>
+      </div>
+      <div class="nl-process-step">
+        <div class="nl-process-num">4</div>
+        <h4>Review</h4>
+        <p>Your feedback shapes the final</p>
+      </div>
+      <div class="nl-process-step">
+        <div class="nl-process-num" style="background:var(--orange)">5</div>
+        <h4>Launch</h4>
+        <p>Go live & grow your brand</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section class="nl-section nl-section-alt">
+    <div class="nl-contact-wrap">
+      <span class="nl-eyebrow" style="color:#ffa940">GET IN TOUCH</span>
+      <h2>Ready to Grow Your<br>Digital Presence?</h2>
+      <p>Let's build something amazing together. Reach out today and let's discuss your vision.</p>
+      <div class="nl-contact-row">
+        <button class="nl-btn nl-btn-orange" onclick="sendPrompt('I want to get a custom quote from Netloom Technology')">Get a Free Quote ↗</button>
+        <button class="nl-btn" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.3)">View Portfolio</button>
+      </div>
+      <div class="nl-contact-info">
+        <div class="nl-cinfo"><i class="ti ti-mail" aria-hidden="true" style="font-size:16px"></i> hello@netloom.com</div>
+        <div class="nl-cinfo"><i class="ti ti-phone" aria-hidden="true" style="font-size:16px"></i> +977-9800000000</div>
+        <div class="nl-cinfo"><i class="ti ti-brand-instagram" aria-hidden="true" style="font-size:16px"></i> @netloomtech</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="nl-footer">
+    <p>© 2025 <strong>Netloom Technology</strong> — All Rights Reserved. Crafted with ❤️ for brands that dare to stand out.</p>
+    <div class="nl-divider"></div>
+  </footer>
+</div>
+
+<script>
+function showPkg(id,btn){
+  document.querySelectorAll('.nl-pkg-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nl-pkg-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('pkg-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
